@@ -11,10 +11,11 @@ import Foundation
 
 struct NSObjectTests {
 
-    @Test func className() async throws {
-      class TestClass: NSObject {}
-      #expect(TestClass.className == "TestClass")
-      #expect(TestClass().className == "TestClass")
-    }
-
+  @Test("Check if NSObject's className extension returns the name of the class as a String.")
+  func className() async throws {
+    class TestClass: NSObject {}
+    #expect(TestClass.className == "TestClass")
+    #expect(TestClass().className == "TestClass")
+  }
+  
 }
