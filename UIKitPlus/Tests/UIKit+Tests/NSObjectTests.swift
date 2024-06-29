@@ -7,7 +7,7 @@
 
 import Testing
 import Foundation
-@testable import UIKit_
+@testable import UIKitPlus
 
 struct NSObjectTests {
 

@@ -4,21 +4,21 @@
 import PackageDescription
 
 let package = Package(
-    name: "UIKit+",
+    name: "UIKitPlus",
     platforms: [
         .iOS(.v12)
     ],
     products: [
         .library(
-            name: "UIKit+",
-            targets: ["UIKit+"]),
+            name: "UIKitPlus",
+            targets: ["UIKitPlus"]),
     ],
     targets: [
         .target(
-            name: "UIKit+"),
+            name: "UIKitPlus"),
         .testTarget(
             name: "UIKit+Tests",
-            dependencies: ["UIKit+"]
+            dependencies: ["UIKitPlus"]
         ),
     ]
 )
