@@ -1,2 +1,2 @@
 # UIKit+
-Useful extensions and helpers for UIKit.
+Useful extensions and helpers for Swift, UIKit and SwiftUI.
