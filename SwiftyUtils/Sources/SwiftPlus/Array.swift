@@ -109,6 +109,42 @@ public extension Array {
     }
     return random
   }
+  
+  /**
+  Generates a new array with a shifted starting point.
+  
+  - Parameter positions: Amount of elements to shift.
+  - Returns: New array with shifted elements.
+   
+   ```swift
+   let numbers = [1, 2, 3, 4, 5]
+   let shiftedNumbers = numbers.shifted(2) 
+   // shiftedNumbers will be [3, 4, 5, 1, 2]
+   ```
+   */
+  func shifted(_ positions: Int) -> Array {
+    var result = self[positions ..< self.count]
+    result += self[0 ..< positions]
+    return Array(result)
+  }
+  
+  /**
+  Splits the array in multiple arrays.
+  
+  - Parameter size: Size of the sub arrays
+  - Returns: Array of Arrays.
+   ```swift
+   let numbers = [1, 2, 3, 4, 5, 6, 7]
+   let chunks = numbers.chunks(size: 3)
+   // chunks will be [[1, 2, 3], [4, 5, 6], [7]]
+   ```
+   */
+  func chunks(size: Int) -> [[Element]] {
+    return stride(from: 0, to: count, by: size).map {
+      let range = $0 ..< Swift.min($0 + size, count)
+      return Array(self[range])
+    }
+  }
 }
 
 public extension Array where Element: Hashable {

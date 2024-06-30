@@ -113,4 +113,22 @@ struct ArrayTests {
     let numbers = [1, 2, 3, 4, 5]
     #expect(numbers.random(amount: 3).count == 3)
   }
+  
+  @Test("shifted")
+  func shifted() async throws {
+    let numbers = [1, 2, 3, 4, 5]
+    let shiftedNumbers = numbers.shifted(2)
+    #expect(shiftedNumbers == [3, 4, 5, 1, 2])
+  }
+  
+  @Test("chunk")
+  func chunk() async throws {
+    let numbers = [1, 2, 3, 4, 5, 6, 7]
+    let chunks = numbers.chunks(size: 3)
+    #expect(chunks == [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7]
+    ])
+  }
 }
