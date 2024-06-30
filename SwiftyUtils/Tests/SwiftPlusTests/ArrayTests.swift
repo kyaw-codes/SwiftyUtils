@@ -24,7 +24,6 @@ struct ArrayTests {
     #expect(["a", "b", "c"].toDictionary() == ["0": "a", "1": "b", "2": "c"])
   }
   
-  
   @Test("mutateInPlace")
   func mutateInPlace() async throws {
     struct Counter: Equatable {
@@ -99,5 +98,13 @@ struct ArrayTests {
     
     let numbers = [3, 1, 1, 2, 7, 4, 7]
     #expect(numbers.unique(identityFunc) == [3, 1, 2, 7, 4])
+    #expect(numbers.uniques == [3, 1, 2, 7, 4])
+  }
+  
+  @Test("Rearrange")
+  func rearrange() async throws {
+    var numbers = [1, 2, 3, 4, 5]
+    numbers.rearrange(from: 3, to: 0)
+    #expect(numbers == [4, 1, 2, 3, 5])
   }
 }

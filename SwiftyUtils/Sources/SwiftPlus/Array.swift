@@ -56,9 +56,34 @@ public extension Array {
     }
   }
   
-  /// Returns an array containing unique elements from the original collection based on a specified mapping. The uniqueness of each element is determined by the value returned from the provided mapping closure.
-  /// - Parameter map: A closure that takes an element of the collection and returns a value of a hashable type `T`.
-  /// - Returns: An array containing elements from the original collection that are unique based on the value produced by the mapping closure.
+  /**
+  Returns an array containing unique elements from the original collection based on a specified mapping. The uniqueness of each element is determined by the value returned from the provided mapping closure.
+  - Parameter map: A closure that takes an element of the collection and returns a value of a hashable type `T`.
+  - Returns: An array containing elements from the original collection that are unique based on the value produced by the mapping closure.
+   
+   ```swift
+   struct Car {
+       let model: String
+       let year: Int
+   }
+
+   let cars = [
+       Car(model: "Toyota", year: 2020),
+       Car(model: "Honda", year: 2020),
+       Car(model: "Toyota", year: 2021),
+       Car(model: "Ford", year: 2020)
+   ]
+
+   let uniqueCarsByModel = cars.unique(\.model)
+   
+   // uniqueCarsByModel will be:
+   // [
+   //   Car(model: "Toyota", year: 2020),
+   //   Car(model: "Honda", year: 2020),
+   //   Car(model: "Ford", year: 2020)
+   // ]
+   ```
+  */
   func unique<T: Hashable>(_ map: (Element) -> T)  -> [Element] {
     var set = Set<T>()
     var arrayOrdered = [Element]()
@@ -70,5 +95,47 @@ public extension Array {
     }
     
     return arrayOrdered
+  }
+}
+
+public extension Array where Element: Hashable {
+  /**
+   Get unique elements from an array
+   
+   ```swift
+   let numbers = [1, 2, 2, 3, 5, 5, 4]
+   let uniqueNumbers = numbers.uniques // [1, 2, 3, 5, 4]
+   ```
+   */
+  var uniques: Array {
+    var buffer = Array()
+    var added = Set<Element>()
+    for elem in self {
+      if !added.contains(elem) {
+        buffer.append(elem)
+        added.insert(elem)
+      }
+    }
+    return buffer
+  }
+}
+
+public extension RangeReplaceableCollection where Indices: Equatable {
+  /** 
+   Rearranges an element within a collection by moving it from one index to another.
+   - Parameter from: The index of the element to move.
+   - Parameter to: The index where the element should be moved.
+   
+   This function is useful when you need to change the position of an element in a collection, such as moving an item in an array from one position to another.
+   
+   ```swift
+   var numbers = [1, 2, 3, 4, 5]
+   numbers.rearrange(from: 2, to: 0)
+   // numbers will be [3, 1, 2, 4, 5]
+   ```
+   */
+  mutating func rearrange(from: Index, to: Index) {
+    precondition(from != to && indices.contains(from) && indices.contains(to), "invalid indices")
+    insert(remove(at: from), at: to)
   }
 }
