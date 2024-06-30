@@ -70,4 +70,34 @@ struct ArrayTests {
     #expect(arr[safe: 0] == "a")
     #expect(arr[safe: 3] == nil)
   }
+  
+  @Test("Unique")
+  func unique() async throws {
+    struct Person: Equatable {
+        let firstName: String
+        let lastName: String
+    }
+    
+    let people = [
+        Person(firstName: "John", lastName: "Doe"),
+        Person(firstName: "Jane", lastName: "Smith"),
+        Person(firstName: "Alice", lastName: "Johnson"),
+        Person(firstName: "Bob", lastName: "Brown"),
+        Person(firstName: "Anna", lastName: "Smith")
+    ]
+    
+    let uniquePeopleByLastName = people.unique(\.lastName)
+    
+    #expect(
+      uniquePeopleByLastName == [
+        Person(firstName: "John", lastName: "Doe"),
+        Person(firstName: "Jane", lastName: "Smith"),
+        Person(firstName: "Alice", lastName: "Johnson"),
+        Person(firstName: "Bob", lastName: "Brown")
+      ]
+    )
+    
+    let numbers = [3, 1, 1, 2, 7, 4, 7]
+    #expect(numbers.unique(identityFunc) == [3, 1, 2, 7, 4])
+  }
 }

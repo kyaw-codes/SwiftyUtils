@@ -55,4 +55,20 @@ public extension Array {
       try transform(&self[i])
     }
   }
+  
+  /// Returns an array containing unique elements from the original collection based on a specified mapping. The uniqueness of each element is determined by the value returned from the provided mapping closure.
+  /// - Parameter map: A closure that takes an element of the collection and returns a value of a hashable type `T`.
+  /// - Returns: An array containing elements from the original collection that are unique based on the value produced by the mapping closure.
+  func unique<T: Hashable>(_ map: (Element) -> T)  -> [Element] {
+    var set = Set<T>()
+    var arrayOrdered = [Element]()
+    for value in self {
+      if !set.contains(map(value)) {
+        set.insert(map(value))
+        arrayOrdered.append(value)
+      }
+    }
+    
+    return arrayOrdered
+  }
 }
