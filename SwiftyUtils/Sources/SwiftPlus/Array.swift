@@ -96,6 +96,19 @@ public extension Array {
     
     return arrayOrdered
   }
+  
+  /// Picks random elements from the array. Accepts duplicates.
+  ///
+  /// - Parameter amount: elements count to be picked randomly.
+  func random(amount: Int) -> [Element] {
+    var random = [Element]()
+    for _ in 0 ..< amount {
+      let indexToSelect = Int(arc4random_uniform(UInt32(count - 1)))
+      let element = self[indexToSelect]
+      random.append(element)
+    }
+    return random
+  }
 }
 
 public extension Array where Element: Hashable {

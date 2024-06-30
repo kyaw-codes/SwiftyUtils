@@ -107,4 +107,10 @@ struct ArrayTests {
     numbers.rearrange(from: 3, to: 0)
     #expect(numbers == [4, 1, 2, 3, 5])
   }
+  
+  @Test("Random pick")
+  func randomPick() async throws {
+    let numbers = [1, 2, 3, 4, 5]
+    #expect(numbers.random(amount: 3).count == 3)
+  }
 }
