@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SwiftyUtils",
     platforms: [
-        .iOS(.v12)
+      .iOS(.v12)
     ],
     products: [
       .library(
@@ -27,8 +27,16 @@ let package = Package(
         .target(
             name: "SwiftUIPlus"),
         .testTarget(
-            name: "UIKit+Tests",
+            name: "UIKitPlusTests",
             dependencies: ["UIKitPlus"]
         ),
+        .testTarget(
+            name: "SwiftUIPlusTests",
+            dependencies: ["SwiftUIPlus"]
+        ),
+        .testTarget(
+            name: "SwiftPlusTests",
+            dependencies: ["SwiftPlus"]
+        )
     ]
 )
