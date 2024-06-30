@@ -22,11 +22,13 @@ public extension Array {
     zip(self.indices, self).reduce(into: [:]) { $0["\($1.0)"] = $1.1 }
   }
   
-  /// Applies a given transformation to each element of an array, modifying the elements in place, particularly use for value type elements.
-  /// - Parameter transform: Closure that takes an `inout Element` and performs some operation on it. The closure can throw an error, and if it does, the function will propagate the error.
-  ///
-  /// To use this function, you call it on a mutable collection and pass a closure that modifies each element. If the closure can throw an error, you need to handle the error using `try`, `try?`, or `try!`.
   /**
+   Applies a given transformation to each element of an array, modifying the elements in place, particularly use for value type elements.
+   
+   - Parameter transform: Closure that takes an `inout Element` and performs some operation on it. The closure can throw an error, and if it does, the function will propagate the error.
+  
+   To use this function, you call it on a mutable collection and pass a closure that modifies each element. If the closure can throw an error, you need to handle the error using `try`, `try?`, or `try!`.
+   
     ```swift
      struct Person {
        let name: String
