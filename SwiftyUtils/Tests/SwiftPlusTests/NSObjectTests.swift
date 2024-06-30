@@ -2,12 +2,12 @@
 //  NSObjectTests.swift
 //
 //
-//  Created by Kyaw Zay Ya Lin Tun on 29/06/2024.
+//  Created by Kyaw Zay Ya Lin Tun on 30/06/2024.
 //
 
-import Testing
 import Foundation
-@testable import UIKitPlus
+import SwiftPlus
+import Testing
 
 struct NSObjectTests {
 

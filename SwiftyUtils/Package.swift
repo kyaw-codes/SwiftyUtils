@@ -21,11 +21,11 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "UIKitPlus"),
+          name: "UIKitPlus", dependencies: ["SwiftPlus"]),
         .target(
             name: "SwiftPlus"),
         .target(
-            name: "SwiftUIPlus"),
+            name: "SwiftUIPlus", dependencies: ["SwiftPlus"]),
         .testTarget(
             name: "UIKitPlusTests",
             dependencies: ["UIKitPlus"]

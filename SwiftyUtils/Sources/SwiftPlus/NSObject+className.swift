@@ -5,8 +5,7 @@
 //  Created by Kyaw Zay Ya Lin Tun on 29/06/2024.
 //
 
-#if canImport(UIKit)
-import UIKit
+import Foundation
 
 public extension NSObject {
   /// Returns the name of the class as a String
@@ -19,5 +18,3 @@ public extension NSObject {
     return String(describing: type(of: self))
   }
 }
-
-#endif
