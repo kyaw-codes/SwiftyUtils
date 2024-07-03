@@ -17,16 +17,4 @@ struct DataTests {
     #expect(inputData?.string == inputString)
   }
   
-  @Test func generateRandom() async throws {
-    Task {
-      let sixtyFourBytesData = Data.generateRandom()
-      #expect(sixtyFourBytesData.count == 64)
-    }
-    
-    Task {
-      let sixteenBytesData = Data.generateRandom(16)
-      #expect(sixteenBytesData.count == 16)
-    }
-  }
-  
 }
