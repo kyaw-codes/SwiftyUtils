@@ -17,7 +17,10 @@ let package = Package(
             targets: ["UIKitPlus"]),
         .library(
             name: "SwiftUIPlus",
-            targets: ["SwiftUIPlus"])
+            targets: ["SwiftUIPlus"]),
+      .library(
+          name: "SwiftUIComponents",
+          targets: ["SwiftUIComponents"])
     ],
     targets: [
         .target(
@@ -26,6 +29,8 @@ let package = Package(
             name: "SwiftPlus"),
         .target(
             name: "SwiftUIPlus", dependencies: ["SwiftPlus"]),
+        .target(
+            name: "SwiftUIComponents", dependencies: ["SwiftPlus", "UIKitPlus", "SwiftUIPlus"]),
         .testTarget(
             name: "UIKitPlusTests",
             dependencies: ["UIKitPlus"]
