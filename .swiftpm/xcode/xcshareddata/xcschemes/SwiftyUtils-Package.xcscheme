@@ -29,6 +29,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "SwiftUIComponents"
+               BuildableName = "SwiftUIComponents"
+               BlueprintName = "SwiftUIComponents"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "SwiftUIPlus"
                BuildableName = "SwiftUIPlus"
                BlueprintName = "SwiftUIPlus"
@@ -46,34 +60,6 @@
                BlueprintIdentifier = "UIKitPlus"
                BuildableName = "UIKitPlus"
                BlueprintName = "UIKitPlus"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftUIScreen"
-               BuildableName = "SwiftUIScreen"
-               BlueprintName = "SwiftUIScreen"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "SwiftUIComponents"
-               BuildableName = "SwiftUIComponents"
-               BlueprintName = "SwiftUIComponents"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
