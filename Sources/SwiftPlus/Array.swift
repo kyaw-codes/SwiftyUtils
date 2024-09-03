@@ -145,6 +145,16 @@ public extension Array {
       return Array(self[range])
     }
   }
+  
+  // MARK: Need documentation and UTs
+
+  mutating func mutateEach(by transform: (inout Self.Element) throws -> Void) rethrows {
+    self = try map { el in
+      var el = el
+      try transform(&el)
+      return el
+    }
+  }
 }
 
 public extension Array where Element: Hashable {
@@ -186,5 +196,25 @@ public extension RangeReplaceableCollection where Indices: Equatable {
   mutating func rearrange(from: Index, to: Index) {
     precondition(from != to && indices.contains(from) && indices.contains(to), "invalid indices")
     insert(remove(at: from), at: to)
+  }
+  
+  // MARK: Need documentation and UTs
+  
+  func unique<T: Hashable>(map: ((Element) -> (T)))  -> [Element] {
+    var set = Set<T>() //the unique list kept in a Set for fast retrieval
+    var arrayOrdered = [Element]() //keeping the unique list of elements but ordered
+    for value in self {
+      if !set.contains(map(value)) {
+        set.insert(map(value))
+        arrayOrdered.append(value)
+      }
+    }
+    
+    return arrayOrdered
+  }
+  
+  func toDictionary() -> [String: Element] {
+    return enumerated()
+      .reduce(into: [:]) { $0["\($1.offset)"] = $1.element }
   }
 }
