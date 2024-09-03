@@ -22,11 +22,17 @@ let package = Package(
           name: "SwiftUIComponents",
           targets: ["SwiftUIComponents"])
     ],
+    dependencies: [
+      .package(url: "https://github.com/SwifterSwift/SwifterSwift.git", from: "6.0.0")
+    ],
     targets: [
         .target(
           name: "UIKitPlus", dependencies: ["SwiftPlus"]),
         .target(
-            name: "SwiftPlus"),
+          name: "SwiftPlus",
+          dependencies: [
+            "SwifterSwift",
+          ]),
         .target(
             name: "SwiftUIPlus", dependencies: ["SwiftPlus"]),
         .target(

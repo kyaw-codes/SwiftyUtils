@@ -1,0 +1,15 @@
+{
+  "originHash" : "dc32e33a771d41989c60d58ed636af3fd5f6a36e3d3e6eb1b4acbb26cc88f495",
+  "pins" : [
+    {
+      "identity" : "swifterswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwifterSwift/SwifterSwift.git",
+      "state" : {
+        "revision" : "39fa28c90a3ebe3d53f80289304fd880cf2c42d0",
+        "version" : "6.2.0"
+      }
+    }
+  ],
+  "version" : 3
+}
