@@ -218,3 +218,25 @@ public extension RangeReplaceableCollection where Indices: Equatable {
       .reduce(into: [:]) { $0["\($1.offset)"] = $1.element }
   }
 }
+
+public extension Collection {
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+
+    var isNotEmpty: Bool {
+        !isEmpty
+    }
+
+    func chunk(offset: Int) -> [SubSequence] {
+        var res: [SubSequence] = []
+        var i = startIndex
+        var rangeIndex: Index
+        while i != endIndex {
+            rangeIndex = index(i, offsetBy: offset, limitedBy: endIndex) ?? endIndex
+            res.append(self[i..<rangeIndex])
+            i = rangeIndex
+        }
+        return res
+    }
+}

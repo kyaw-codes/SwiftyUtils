@@ -9,6 +9,14 @@
 import UIKit
 
 public extension UIApplication {
+    
+    static var mainWindow: UIWindow? {
+        UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+    }
+
   var appVersion: String {
     Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0.0.0"
   }
@@ -18,18 +26,24 @@ public extension UIApplication {
   }
   
   /// Get the top most presented UIViewController
-  func topViewController() -> UIViewController? {
-    let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
-
-    if var topController = keyWindow?.rootViewController {
-        while let presentedViewController = topController.presentedViewController {
-            topController = presentedViewController
+    class func topViewController(controller: UIViewController? = UIApplication.mainWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return topViewController(controller: navigationController.visibleViewController)
         }
-      return topController
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return topViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return topViewController(controller: presented)
+        }
+        return controller
     }
     
-    return nil
-  }
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
 
 #endif
